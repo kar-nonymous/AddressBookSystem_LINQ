@@ -38,13 +38,27 @@ namespace AddressBookSystem_LINQ
             Console.WriteLine("FirstName: " + recordedData.Field<string>("FirstName") + " LastName: " + recordedData.Field<string>("LastName") + " Address: " + recordedData.Field<string>("Address") + " City: " + recordedData.Field<string>("City") + " State: " + recordedData.Field<string>("State"));
         }
         /// <summary>
-        /// UC5 :
+        /// UC 5:
         /// Deletes contact
         /// </summary>
         public void DeleteContact()
         {
             var recordedData = addressTable.AsEnumerable().Where(x => x.Field<string>("FirstName") == "Shashank").FirstOrDefault();
             recordedData.Delete();
+        }
+        /// <summary>
+        /// UC 6:
+        /// Retrieves data with city or state name
+        /// </summary>
+        public void RetrieveDataWithCityOrState()
+        {
+            var recordedData = from contacts in addressTable.AsEnumerable()
+                               where (contacts.Field<string>("City") == "Agra" || contacts.Field<string>("State") == "UP")
+                               select contacts;
+            foreach (var contact in recordedData)
+            {
+                Console.WriteLine("FirstName: " + contact.Field<string>("FirstName") + " LastName: " + contact.Field<string>("LastName") + " Address: " + contact.Field<string>("Address") + " City: " + contact.Field<string>("City") + " State: " + contact.Field<string>("State"));
+            }
         }
     }
 }

@@ -17,6 +17,14 @@ namespace AddressBookSystem_LINQ
             /// Calling DeleteContact method from AddressBookDataTable class
             Console.WriteLine("Deleting contact...");
             addressBookDataTable.DeleteContact();
+            /// Calling RetrieveDataWithCityOrState method from AddressBookDataTable class
+            Console.WriteLine("Contacts with city or state name: ");
+            addressBookDataTable.RetrieveDataWithCityOrState();
+            /// Calling CountByCity and CountByState method from AddressBookDataTable class
+            Console.WriteLine("Count by city: ");
+            addressBookDataTable.CountByCity();
+            Console.WriteLine("Count by state: ");
+            addressBookDataTable.CountByState();
         }
     }
 }
