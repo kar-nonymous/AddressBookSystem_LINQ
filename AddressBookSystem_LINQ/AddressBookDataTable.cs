@@ -60,5 +60,29 @@ namespace AddressBookSystem_LINQ
                 Console.WriteLine("FirstName: " + contact.Field<string>("FirstName") + " LastName: " + contact.Field<string>("LastName") + " Address: " + contact.Field<string>("Address") + " City: " + contact.Field<string>("City") + " State: " + contact.Field<string>("State"));
             }
         }
+        /// <summary>
+        /// UC 7:
+        /// Counts by city
+        /// </summary>
+        public void CountByCity()
+        {
+            var recordedData = addressTable.AsEnumerable().GroupBy(r => r.Field<string>("City")).Select(x => new { City = x.Key, Count = x.Count() });
+            foreach (var contact in recordedData)
+            {
+                Console.WriteLine("City: " + contact.City + " Count: " + contact.Count);
+            }
+        }
+        /// <summary>
+        /// UC 7:
+        /// Counts by state
+        /// </summary>
+        public void CountByState()
+        {
+            var recordedData = addressTable.AsEnumerable().GroupBy(r => r.Field<string>("State")).Select(x => new { State = x.Key, Count = x.Count() });
+            foreach (var contact in recordedData)
+            {
+                Console.WriteLine("State: " + contact.State + " Count: " + contact.Count);
+            }
+        }
     }
 }
