@@ -33,9 +33,18 @@ namespace AddressBookSystem_LINQ
         /// </summary>
         public void EditContact()
         {
-            var recordedData = addressTable.AsEnumerable().Where(x => x.Field<string>("FirstName").Equals("Kumar")).FirstOrDefault();
+            var recordedData = addressTable.AsEnumerable().Where(x => x.Field<string>("FirstName") == "Kumar").FirstOrDefault();
             recordedData["Zip"] = "281001";
             Console.WriteLine("FirstName: " + recordedData.Field<string>("FirstName") + " LastName: " + recordedData.Field<string>("LastName") + " Address: " + recordedData.Field<string>("Address") + " City: " + recordedData.Field<string>("City") + " State: " + recordedData.Field<string>("State"));
+        }
+        /// <summary>
+        /// UC5 :
+        /// Deletes contact
+        /// </summary>
+        public void DeleteContact()
+        {
+            var recordedData = addressTable.AsEnumerable().Where(x => x.Field<string>("FirstName") == "Shashank").FirstOrDefault();
+            recordedData.Delete();
         }
     }
 }

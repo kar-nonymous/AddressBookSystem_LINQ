@@ -14,6 +14,9 @@ namespace AddressBookSystem_LINQ
             /// Calling EditContact method from AddressBookDataTable class
             Console.WriteLine("Updated table..");
             addressBookDataTable.EditContact();
+            /// Calling DeleteContact method from AddressBookDataTable class
+            Console.WriteLine("Deleting contact...");
+            addressBookDataTable.DeleteContact();
         }
     }
 }
